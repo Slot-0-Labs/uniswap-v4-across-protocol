@@ -1,139 +1,30 @@
-# v4-template
-### **A template for writing Uniswap v4 Hooks 🦄**
+# 🔄 Cross-Chain Swap Hook with Uniswap V4 and Across Protocol 🔄
+## Uniswap V4 🦄
 
-[`Use this Template`](https://github.com/saucepoint/v4-template/generate)
+Uniswap V4 is a non-custodial, non-upgradeable, and permissionless Automated Market Maker (AMM) protocol built on the Ethereum Virtual Machine (EVM). It introduces several architectural changes and features that improve upon the AMM model built in Uniswap V1 and V2, and the concentrated liquidity model introduced in Uniswap V3. Key features include hooks, singleton, flash accounting, and native ETH support. 🌟
 
-1. The example hook [Counter.sol](src/Counter.sol) demonstrates the `beforeSwap()` and `afterSwap()` hooks
-2. The test template [Counter.t.sol](test/Counter.t.sol) preconfigures the v4 pool manager, test tokens, and test liquidity.
-3. The scripts in the v4-template are written so that you can
-   - Designed for Goerli, but usable for other networks
-   - Deploy a hook contract
-   - Create a liquidity pool on V4
-   - Add liquidity to a pool
-   - Swap tokens on a pool
-6. This template is built using Foundry
+## Across Protocol 🌉
 
-<details>
-<summary>Updating to v4-template:latest</summary>
+Across Protocol is a trust-minimized bridge for transferring assets between Ethereum and its Layer 2s. It uses a network of relayers and an Optimistic Oracle to ensure that transfers are secure and efficient. The protocol also introduces a unique UBA Fee Model to balance liquidity across chains. 💸
 
-This template is actively maintained -- you can update the v4 dependencies, scripts, and helpers: 
-```bash
-git remote add template https://github.com/uniswapfoundation/v4-template
-git fetch template
-git merge template/main <BRANCH> --allow-unrelated-histories
-```
+## Cross-Chain Swapping with Uniswap V4 and Across Protocol 🔀
 
-</details>
+The Cross-Chain Swap Hook leverages the features of Uniswap V4 and Across Protocol to enable efficient cross-chain swaps. Here's a step-by-step process of how it works:
 
----
+1. **User initiates a swap on Chain A** in a Uniswap V4 pool with the Cross-Chain Swap Hook.
+2. The **beforeSwap hook on Chain A triggers**, initiating a bridge transfer from Chain A to Chain B via Across Protocol.
+3. **Relayers in the Across Protocol ecosystem** provide the equivalent amount of tokens to the user on Chain B.
+4. The **beforeSwap hook on Chain B triggers**, executing the swap using the tokens provided by the relayer.
+5. The **afterSwap hook on Chain B triggers**, performing any necessary actions after the swap.
+6. A **proof of the swap** and the validity of the original deposit is submitted to the Optimistic Oracle in the Across Protocol, and the relayer is reimbursed.
+7. The **afterSwap hook on Chain A triggers**, performing any necessary actions after the swap.
 
-# Linux / WSL2 (TSTORE/TLOAD)
-
-Please update [foundry.toml](foundry.toml#L9) to use the linux `solc`
-
-Mac users do not need to change anything by default
-
-## Set up
-
-*requires [foundry](https://book.getfoundry.sh)*
-
-```
-forge install
-forge test
-```
-
-### Local Development (Anvil)
-
-Because v4 depends on TSTORE and its *business licensed*, you can only deploy & test hooks on [anvil](https://book.getfoundry.sh/anvil/)
-
-```bash
-# start anvil with TSTORE support
-# (`foundryup`` to update if cancun is not an option)
-anvil --hardfork cancun
-
-# in a new terminal
-forge script script/Anvil.s.sol \
-    --rpc-url http://localhost:8545 \
-    --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 \
-    --broadcast
-```
-
-<details>
-<summary><h3>Goerli Testnet</h3></summary>
-
-NOTE: 11/21/2023, the Goerli deployment is out of sync with the latest v4. It is recommend to use local testing instead
-
-For testing on Goerli Testnet the Uniswap Foundation team has deployed a slimmed down version of the V4 contract (due to current contract size limits) on the network.
-
-The relevant addresses for testing on Goerli are the ones below
-
-```bash
-POOL_MANAGER = 0x3A9D48AB9751398BbFa63ad67599Bb04e4BdF98b
-POOL_MODIFY_POSITION_TEST = 0x83feDBeD11B3667f40263a88e8435fca51A03F8C
-SWAP_ROUTER = 0xF8AADC65Bf1Ec1645ef931317fD48ffa734a185c
-```
-
-Update the following command with your own private key:
-
-```
-forge script script/00_Counter.s.sol \
---rpc-url https://rpc.ankr.com/eth_goerli \
---private-key [your_private_key_on_goerli_here] \
---broadcast
-```
-
-### *Deploying your own Tokens For Testing*
-
-Because V4 is still in testing mode, most networks don't have liquidity pools live on V4 testnets. We recommend launching your own test tokens and expirementing with them that. We've included in the templace a Mock UNI and Mock USDC contract for easier testing. You can deploy the contracts and when you do you'll have 1 million mock tokens to test with for each contract. See deployment commands below
-
-```
-forge create script/mocks/mUNI.sol:MockUNI \
---rpc-url [your_rpc_url_here] \
---private-key [your_private_key_on_goerli_here]
-```
-
-```
-forge create script/mocks/mUSDC.sol:MockUSDC \
---rpc-url [your_rpc_url_here] \
---private-key [your_private_key_on_goerli_here]
-```
-
-</details>
-
----
-
-<details>
-<summary><h2>Troubleshooting</h2></summary>
+## Flash Accounting in Cross-Chain Swapping 💡
+Uniswap V4 and Across Protocol can be combined to facilitate cross-chain swapping by leveraging the flash accounting feature of Uniswap V4. In this setup, a user initiates a swap on Chain A in a Uniswap V4 pool. The tokens provided by the user are temporarily stored in the pool, creating a positive balance delta. This swap triggers a bridge transfer via Across Protocol to Chain B, where the equivalent amount of tokens are provided to the user, creating a negative balance delta. The balance deltas are local to each chain and do not need to be zero across chains. Instead, each chain ensures that its balance delta is zero at the end of each transaction, adhering to the principles of flash accounting. This allows for efficient cross-chain swaps while maintaining the integrity of the Uniswap V4 pools on both chains.
 
 
+## Current Concerns/Issues 🚩
 
-### *Permission Denied*
-
-When installing dependencies with `forge install`, Github may throw a `Permission Denied` error
-
-Typically caused by missing Github SSH keys, and can be resolved by following the steps [here](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) 
-
-Or [adding the keys to your ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent), if you have already uploaded SSH keys
-
-### Hook deployment failures
-
-Hook deployment failures are caused by incorrect flags or incorrect salt mining
-
-1. Verify the flags are in agreement:
-    * `getHookCalls()` returns the correct flags
-    * `flags` provided to `HookMiner.find(...)`
-2. Verify salt mining is correct:
-    * In **forge test**: the *deploye*r for: `new Hook{salt: salt}(...)` and `HookMiner.find(deployer, ...)` are the same. This will be `address(this)`. If using `vm.prank`, the deployer will be the pranking address
-    * In **forge script**: the deployer must be the CREATE2 Proxy: `0x4e59b44847b379578588920cA78FbF26c0B4956C`
-        * If anvil does not have the CREATE2 deployer, your foundry may be out of date. You can update it with `foundryup`
-
-</details>
-
----
-
-Additional resources:
-
-[v4-periphery](https://github.com/uniswap/v4-periphery) contains advanced hook implementations that serve as a great reference
-
-[v4-core](https://github.com/uniswap/v4-core)
-
+- **Handling of balance deltas:** Ensuring the balance delta on each chain is zero at the end of each transaction.
+- **High gas costs:** Cross-chain transfers involve multiple transactions and state updates, which can be expensive.
+- **Balancing of liquidity pools:** An imbalance in the pools could lead to slippage or other undesirable effects.
