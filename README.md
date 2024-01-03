@@ -19,7 +19,7 @@ The Cross-Chain Swap Hook leverages the features of Uniswap V4 and Across Protoc
 6. A **proof of the swap** and the validity of the original deposit is submitted to the Optimistic Oracle in the Across Protocol, and the relayer is reimbursed.
 7. The **afterSwap hook on Chain A triggers**, performing any necessary actions after the swap.
 
-## Flash Accounting in Cross-Chain Swapping 💡
+## Flash Accounting in Cross-Chain Swapping ⚡️
 Uniswap V4 and Across Protocol can be combined to facilitate cross-chain swapping by leveraging the flash accounting feature of Uniswap V4. In this setup, a user initiates a swap on Chain A in a Uniswap V4 pool. The tokens provided by the user are temporarily stored in the pool, creating a positive balance delta. This swap triggers a bridge transfer via Across Protocol to Chain B, where the equivalent amount of tokens are provided to the user, creating a negative balance delta. The balance deltas are local to each chain and do not need to be zero across chains. Instead, each chain ensures that its balance delta is zero at the end of each transaction, adhering to the principles of flash accounting. This allows for efficient cross-chain swaps while maintaining the integrity of the Uniswap V4 pools on both chains.
 
 
