@@ -2,6 +2,8 @@
 
 Welcome to the Aether Protocol V1, an innovative platform designed to revolutionize cross-chain swaps by integrating Uniswap V4 and Across Protocol technologies. Aether Protocol embodies a seamless, efficient, and secure method for transferring assets across different blockchain networks.
 
+!(f)[./DALL·E 2024-01-04 19.24.09 - Create a 16-bit pixel art image visualizing 'Aether' with a solarpunk vibe, where data streams connect different planets. Each planet is a hub of sust.png]
+
 ## 🦄 Uniswap V4: The Core of Aether Protocol
 Uniswap V4, a cornerstone of Aether Protocol, is a cutting-edge Automated Market Maker (AMM) protocol. Key aspects include:
 - **Non-custodial, Non-upgradeable, Permissionless**: Built on the Ethereum Virtual Machine (EVM), it offers robust security and user autonomy.
