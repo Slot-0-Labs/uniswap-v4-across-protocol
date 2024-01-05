@@ -1,7 +1,5 @@
-# 🌌 Argos Protocol V1: The Cross-Chain Swap Solution 🌌
+# Argos Protocol V1: The Cross-Chain Swap Solution 🧘‍♂️
 <img src="./argos.png" alt="odyssey_gif" width="50%" />
-
-**odyssey_gif**
 
 Welcome to the Argos Protocol V1, an innovative platform designed to revolutionize cross-chain swaps by integrating Uniswap V4 and Across Protocol technologies. Argos Protocol embodies a seamless, efficient, and secure method for transferring assets across different blockchain networks.
 
