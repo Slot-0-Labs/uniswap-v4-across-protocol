@@ -1,5 +1,5 @@
-<img src="./DALL·E 2024-01-04 19.24.09 - Create a 16-bit pixel art image visualizing 'Aether' with a solarpunk vibe, where data streams connect different planets. Each planet is a hub of sust.png" alt="odyssey_gif" width="50%" />
 # 🌌 Aether Protocol V1: The Cross-Chain Swap Solution 🌌
+<img src="./DALL·E 2024-01-04 19.24.09 - Create a 16-bit pixel art image visualizing 'Aether' with a solarpunk vibe, where data streams connect different planets. Each planet is a hub of sust.png" alt="odyssey_gif" width="50%" />
 
 Welcome to the Aether Protocol V1, an innovative platform designed to revolutionize cross-chain swaps by integrating Uniswap V4 and Across Protocol technologies. Aether Protocol embodies a seamless, efficient, and secure method for transferring assets across different blockchain networks.
 
