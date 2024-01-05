@@ -1,30 +1,30 @@
-# 🔄 Cross-Chain Swap Hook with Uniswap V4 and Across Protocol 🔄
-## Uniswap V4 🦄
+# 🌌 Aether Protocol V1: The Cross-Chain Swap Solution 🌌
 
-Uniswap V4 is a non-custodial, non-upgradeable, and permissionless Automated Market Maker (AMM) protocol built on the Ethereum Virtual Machine (EVM). It introduces several architectural changes and features that improve upon the AMM model built in Uniswap V1 and V2, and the concentrated liquidity model introduced in Uniswap V3. Key features include hooks, singleton, flash accounting, and native ETH support. 🌟
+Welcome to the Aether Protocol V1, an innovative platform designed to revolutionize cross-chain swaps by integrating Uniswap V4 and Across Protocol technologies. Aether Protocol embodies a seamless, efficient, and secure method for transferring assets across different blockchain networks.
 
-## Across Protocol 🌉
+## 🦄 Uniswap V4: The Core of Aether Protocol
+Uniswap V4, a cornerstone of Aether Protocol, is a cutting-edge Automated Market Maker (AMM) protocol. Key aspects include:
+- **Non-custodial, Non-upgradeable, Permissionless**: Built on the Ethereum Virtual Machine (EVM), it offers robust security and user autonomy.
+- **Advanced Features**: Incorporates architectural enhancements over previous versions (V1, V2, and the concentrated liquidity model in V3).
+- **Innovative Capabilities**: Includes hooks, singleton, flash accounting, and native ETH support for an optimized trading experience.
 
-Across Protocol is a trust-minimized bridge for transferring assets between Ethereum and its Layer 2s. It uses a network of relayers and an Optimistic Oracle to ensure that transfers are secure and efficient. The protocol also introduces a unique UBA Fee Model to balance liquidity across chains. 💸
+## 🌉 Across Protocol: Bridging Chains in Aether
+Across Protocol complements Aether by providing a trust-minimized bridge. Its features are:
+- **Secure Asset Transfer**: Utilizes a network of relayers and an Optimistic Oracle for secure, efficient transfers between Ethereum and its Layer 2s.
+- **UBA Fee Model**: Balances liquidity across chains, enhancing the efficiency of cross-chain interactions.
 
-## Cross-Chain Swapping with Uniswap V4 and Across Protocol 🔀
+## 🔀 Aether's Cross-Chain Swapping Mechanics
+Aether Protocol V1 leverages Uniswap V4 and Across Protocol to facilitate efficient cross-chain swaps:
+1. **Initiation**: User starts a swap on Chain A in a Uniswap V4 pool integrated with Aether's Cross-Chain Swap Hook.
+2. **Bridge Transfer**: The `beforeSwap` hook on Chain A initiates a bridge transfer to Chain B via Across Protocol.
+3. **Relayer Interaction**: Across Protocol relayers provide equivalent tokens on Chain B.
+4. **Execution and Completion**: Swaps are executed on Chain B, followed by `afterSwap` actions on both chains.
+5. **Optimistic Oracle Verification**: Ensures the validity of the swap and relayer reimbursement.
 
-The Cross-Chain Swap Hook leverages the features of Uniswap V4 and Across Protocol to enable efficient cross-chain swaps. Here's a step-by-step process of how it works:
+## 🚩 Current Challenges in Aether V1
+While Aether Protocol V1 marks a significant milestone, we are actively addressing these challenges:
+- **Balance Delta Handling**: Ensuring zero balance delta at the end of transactions on each chain.
+- **Gas Costs**: Optimizing transactions to reduce gas fees associated with cross-chain transfers.
+- **Liquidity Pool Balance**: Maintaining equilibrium in liquidity pools to prevent slippage and other issues.
 
-1. **User initiates a swap on Chain A** in a Uniswap V4 pool with the Cross-Chain Swap Hook.
-2. The **beforeSwap hook on Chain A triggers**, initiating a bridge transfer from Chain A to Chain B via Across Protocol.
-3. **Relayers in the Across Protocol ecosystem** provide the equivalent amount of tokens to the user on Chain B.
-4. The **beforeSwap hook on Chain B triggers**, executing the swap using the tokens provided by the relayer.
-5. The **afterSwap hook on Chain B triggers**, performing any necessary actions after the swap.
-6. A **proof of the swap** and the validity of the original deposit is submitted to the Optimistic Oracle in the Across Protocol, and the relayer is reimbursed.
-7. The **afterSwap hook on Chain A triggers**, performing any necessary actions after the swap.
-
-## Flash Accounting in Cross-Chain Swapping ⚡️
-Uniswap V4 and Across Protocol can be combined to facilitate cross-chain swapping by leveraging the flash accounting feature of Uniswap V4. In this setup, a user initiates a swap on Chain A in a Uniswap V4 pool. The tokens provided by the user are temporarily stored in the pool, creating a positive balance delta. This swap triggers a bridge transfer via Across Protocol to Chain B, where the equivalent amount of tokens are provided to the user, creating a negative balance delta. The balance deltas are local to each chain and do not need to be zero across chains. Instead, each chain ensures that its balance delta is zero at the end of each transaction, adhering to the principles of flash accounting. This allows for efficient cross-chain swaps while maintaining the integrity of the Uniswap V4 pools on both chains.
-
-
-## Current Concerns/Issues 🚩
-
-- **Handling of balance deltas:** Ensuring the balance delta on each chain is zero at the end of each transaction.
-- **High gas costs:** Cross-chain transfers involve multiple transactions and state updates, which can be expensive.
-- **Balancing of liquidity pools:** An imbalance in the pools could lead to slippage or other undesirable effects.
+---
