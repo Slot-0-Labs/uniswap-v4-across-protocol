@@ -1,5 +1,5 @@
 # 🌌 Argos Protocol V1: The Cross-Chain Swap Solution 🌌
-<img src="./DALL·E 2024-01-04 19.24.09 - Create a 16-bit pixel art image visualizing 'Aether' with a solarpunk vibe, where data streams connect different planets. Each planet is a hub of sust.png" alt="odyssey_gif" width="50%" />
+<img src="./argos.png" alt="odyssey_gif" width="50%" />
 
 **odyssey_gif**
 
