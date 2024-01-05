@@ -38,8 +38,4 @@ While Argos Protocol V1 marks a significant milestone, we are actively addressin
 - **Gas Costs**: Optimizing transactions to reduce gas fees associated with cross-chain transfers.
 - **Liquidity Pool Balance**: Maintaining equilibrium in liquidity pools to prevent slippage and other issues.
 
-- **Balance Delta Handling**: Ensuring zero balance delta at the end of transactions on each chain.
-- **Gas Costs**: Optimizing transactions to reduce gas fees associated with cross-chain transfers.
-- **Liquidity Pool Balance**: Maintaining equilibrium in liquidity pools to prevent slippage and other issues.
-
 ---
